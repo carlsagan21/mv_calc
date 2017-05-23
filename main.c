@@ -84,11 +84,13 @@ int main(int argc, char **argv) {
 
 
     // display
-    printf("%-10s%-10s%-10s%-10s\n", "index", "CPU", "FPGA", "FPGA(hex)");
+    printf("%-10s%-20s%-20s%-20s\n", "index", "CPU", "FPGA", "FPGA(hex)");
 //    container.f = output_fpga;
-    for (i = 0; i < SIZE; i++)
-        printf("%-10d%-10f%-10f\n", 0, output_cpu[i], fpga_bram[i]);
-
+    for (i = 0; i < SIZE; i++) {
+        container.f = fpga_bram[i];
+        printf("%-10d%-20f%-20f%-20x\n", i, output_cpu[i], fpga_bram[i], container.i);
+	
+    }
     close(foo);
 
     return 0;
